@@ -3,5 +3,5 @@ code demo和读书笔记《Head First  HTML  与CSS，ver2.0）
 
 ```
 cd /src
-browser-sync start --server --files "**/*.html"
+browser-sync start --server --files "**/*.html" 
 ```
