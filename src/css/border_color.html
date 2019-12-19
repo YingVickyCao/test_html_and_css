@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>border-color</title>
+
+        <style type="text/css">
+            p {
+                background: cornsilk;
+                width: 50%;
+                height: 40px;
+                border-style: solid;
+            }
+        </style>
+    </head>
+    <body>
+        <p style="border-color: #ff0000">all</p>
+        <p style="border-color: rgb(255,0,0)">all</p>
+        <p style="border-color: rgb(100%,0%,0%)">all</p>
+
+        <p style="border-top-color: #ff0000">top</p>
+        <p style="border-right-color: #ff0000">right</p>
+        <p style="border-bottom-color: #ff0000">bottom</p>
+        <p style="border-left-color: #ff0000">left</p>
+
+        <p style="border-style:none; border-bottom-style: solid; border-bottom-color: red;">bottom</p>
+        <p style="border-style:none; border-bottom-style: solid; border-right-color: red;">border bottom(work), but color right(not working)</p>
+    </body>
+</html>
