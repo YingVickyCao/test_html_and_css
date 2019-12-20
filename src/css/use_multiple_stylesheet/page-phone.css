@@ -1,0 +1,19 @@
+p {
+    line-height: 1.9em;
+
+    border-style: dashed;
+    border-width: 1px;
+    border-color: white;
+    padding: 25px;
+    padding-left: 80px;
+    margin: 30px;
+
+    background-color: #a7cece;
+    background-image: url(/src/resources/images/background.gif);
+    background-repeat: no-repeat;
+    background-position: top left;
+
+
+    font-style: italic;
+    font-family: Geneva, "Times New Roman", Times, serif;
+}
