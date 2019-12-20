@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>id selector</title>
+
+        <style type="text/css">
+            /* 更具体 -> 生效
+             选择 id 为footer 的p    元素
+             */
+            p#footer {
+                color: green;
+            }
+
+            /* 选择 id 为footer 的所有元素 */
+            #footer {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!--  ERROR:Duplicated id reference -->
+        <!--  <p id="footer"> -->
+        <p>
+            Header
+        </p>
+
+        <p>
+            Content
+        </p>
+
+        <p id="footer">
+            Footer
+        </p>
+    </body>
+</html>
