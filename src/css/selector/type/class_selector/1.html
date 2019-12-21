@@ -3,7 +3,22 @@
 <html>
     <head>
         <title>Class selector</title>
-        <link type="text/css" rel="stylesheet" href="style.css">
+        <style type="text/css">
+            p {
+                color: green;
+            }
+
+            /* red is a class */
+            /* Apply for only p and h2 with red class */
+            p.red, h2.red {
+                color: red;
+            }
+
+            /* Apply for all element with red class */
+            .red {
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <p>Android Studio provides the fastest tools for building apps on every type of <em>Android</em> device.</p>
