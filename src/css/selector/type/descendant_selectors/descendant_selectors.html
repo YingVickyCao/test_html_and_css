@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>descendant selectors</title>
+
+        <style type="text/css">
+            /* h1 中 所有strong元素（子子孙孙） */
+            h1 strong {
+                color: green;
+            }
+
+            /* id 为 blue_h1  的 h1 中 所有strong元素 （子子孙孙）  */
+            #blue_h1 strong {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h1> This is a <strong>example</strong> code of <strong>child</strong> <em><strong>selectors</strong></em></h1>
+        <h1> This is a <strong>example</strong> code of <strong>child</strong> <em><strong>selectors</strong></em></h1>
+        <h1 id="blue_h1"> This is a <strong>example</strong> code of <strong>child</strong> <em><strong>selectors</strong></em></h1>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>child selectors</title>
+
+        <style type="text/css">
+            /* h1 中 所有 直接孩子strong元素（所有的子） */
+            h1 > strong {
+                color: green;
+            }
+
+            /* id 为 blue_h1  的 h1 中 所有 直接孩子 strong元素 （所有的子）  */
+            #blue_h1 > strong {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1> This is a <strong>example</strong> code of <strong>child</strong> <em><strong>selectors</strong></em></h1>
+        <h1> This is a <strong>example</strong> code of <strong>child</strong> <em><strong>selectors</strong></em></h1>
+        <h1 id="blue_h1"> This is a <strong>example</strong> code of <strong>child</strong> <em><strong>selectors</strong></em></h1>
+    </body>
+</html>
