@@ -29,13 +29,21 @@
                 color: #ff00ff;
             }
 
-            /* 选择器匹配属于任意元素的第一个子元素的<p> 元素 */
+            /* p 且 p是其父元素的第一个元素 */
             p:first-child {
                 background: aqua;
             }
 
+            /* 属于h1，且 em 且 em是其父元素的第一个元素*/
             h1 > em:first-child {
                 background: red;
+            }
+
+            /* div 且 div是是其父元素的最后一个元素 */
+            div:last-child {
+                border-color: orange;
+                border-width: 5px;
+                border-style: solid;
             }
         </style>
     </head>
