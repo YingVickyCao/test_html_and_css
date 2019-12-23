@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>pseudo-class</title>
+
+        <style type="text/css">
+            /* 已访问 */
+            #div_test a:link {
+                color: red;
+            }
+
+            /* 未访问 */
+            #div_test a:visited {
+                color: green;
+            }
+
+            /* 鼠标悬停 */
+            #div_test a:hover {
+                background: #007e7e;
+                color: blue;
+            }
+
+            #div_test a:focus {
+                color: #00ff00;
+            }
+
+            #div_test a:active {
+                color: #ff00ff;
+            }
+
+            /* 选择器匹配属于任意元素的第一个子元素的<p> 元素 */
+            p:first-child {
+                background: aqua;
+            }
+
+            h1 > em:first-child {
+                background: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- When test, clear history -->
+        <div id="div_test">
+            <a href="https://www.baidu.com/" title="baidu">2 baidu</a>
+            <p><em> test</em></p>
+            <p>I am a <em>strong</em> man. I am a <em>strong</em> man.</p>
+            <p>I am a <em>strong</em> man. I am a <em>strong</em> man.</p>
+        </div>
+
+        <hr/>
+
+        <div>
+            <p><em> test</em></p>
+            <a href="https://www.baidu.com/" title="baidu">2 baidu</a>
+            <p>I am a <em>strong</em> man. I am a <em>strong</em> man.</p>
+            <p>I am a <em>strong</em> man. I am a <em>strong</em> man.</p>
+        </div>
+
+        <hr/>
+
+        <div>
+            <h1><em> test</em></h1>
+            <a href="https://www.baidu.com/" title="baidu">3 baidu</a>
+            <h1>I am a <em>strong</em> man. I am a <em>strong</em> man.</h1>
+            <h1>I am a <em>strong</em> man. I am a <em>strong</em> man.</h1>
+        </div>
+    </body>
+</html>
