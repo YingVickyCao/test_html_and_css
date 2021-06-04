@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        table {
+            margin-left: 20px;
+            margin-right: 20px;
+            border: thin solid black;
+            /* 不支持caption 属性的浏览器中，标题仍然显示在表格上方 */
+            caption-side: bottom;
+            /* border-spacing: 0px; */
+            /* border-spacing: 10px 30px; */
+            border-collapse: collapse;
+        }
+
+        th,td{
+            border: thin dotted gray;
+            padding: 5px;
+        }
+
+        th{
+            background-color: #cc6600;
+        }
+
+        caption{
+            font-style: italic;
+            padding-top: 8px;
+        }
+
+        /*  类属性 */
+        .cellcolor{
+            background-color: #fcba7a;
+        }
+
+        p:nth-child(even){
+            background-color: red;
+        }
+        p:nth-child(odd){
+            background-color: green;
+        }
+
+        p:nth-child(2n){
+            background-color: red;
+        }
+        p:nth-child(2n+1){
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <caption>
+        The cities I visited on my travels.
+    </caption>
+    <table>
+        <tr>
+            <th>
+                City
+            </th>
+
+            <th>
+                Date
+            </th>
+
+            <th>
+                Pupulator
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                Shanghai
+            </td>
+            <td>
+                2021/5/1
+            </td>
+            <td>
+                29,686
+            </td>
+        </tr>
+
+        <tr
+        class="cellcolor">
+            <td>
+                BeiJing
+            </td>
+            <td colspan="2" style="text-align: center;">
+                2020/10/8
+            </td>
+            <!-- <td>
+                3600
+            </td> -->
+        </tr>
+        <tr>
+            <td>
+                NanJing
+            </td>
+            <td>
+                2020/10/8
+            </td>
+            <td rowspan="2">
+                5000
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                XinJiang
+            </td>
+            <td>
+                2020/9/8
+            </td>
+            <!-- <td>
+                5000
+            </td> -->
+        </tr>
+
+        <tr>
+            <td>
+                WuXi
+            </td>
+            <td>
+                2020/7/4
+            </td>
+            <td>
+                100
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
