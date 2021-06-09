@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>盒模型 - 外边距</title>
+</head>
+
+<body style="background-color: gray;">
+    <!-- 逐渐拖动窗口，改变宽度，查看页面如何布局 -->
+    <h1>盒模型 - 外边距</h1>
+    <!-- Case 1 ： 浏览器上下放置2个块元素时，
+        垂直方向：浏览器会把它们共同的外边距折叠在一起，折叠的外边距高度是最大的外边距高度。  
+        它们之间的外边距是20px (Max)      
+    -->
+
+    <p style="margin: 0px 0px 10px 0px; padding: 10px ;border: chartreuse 10px solid; background-color: crimson; width: 200px; ">
+        Take advantage of the latest Google technologies through a single set of APIs for Android, delivered across
+        Android devices worldwide as part of Google Play services.
+        Start by setting up the Google Play services library, then build with the APIs for services such as Google Maps,
+        Firebase, Google Cast, Google AdMob, and much more.
+    </p>
+
+    <p
+        style="margin: 20px 0px 0px 0px; padding: 10px ;border: blue 10px solid; background-color:chocolate; width: 200px; height: 200px;">
+        Take advantage of the latest Google technologies through a single set of APIs for Android, delivered across
+        Android devices worldwide as part of Google Play services.
+        Start by setting up the Google Play services library, then build with the APIs for services such as Google Maps,
+        Firebase, Google Cast, Google AdMob, and much more.
+    </p>
+</body>
+
+</html>

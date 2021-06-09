@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>
+        盒模型 - 外边距
+    </title>
+</head>
+
+<body style="background-color: grey;">
+    <p>123</p>
+    <!-- Case 3 ： 浏览器中，一个元素嵌套另一个元素？
+    若外面的元素有一个边框，则垂直外边距折叠。
+    若外面的元素没有一个边框，则垂直外边距不会碰到一起，不折叠。
+    -->
+
+    <!--  垂直外边距折叠 -->
+    <!-- <div style="margin:20px; background-color: hotpink;width: 200px; height: 200px;">
+        <p style="margin:20px; background-color: green;width: 100px; height: 100px;"></p>
+    </div> -->
+
+    <!--  垂直外边距不折叠 -->
+    <div style="margin:20px; border: greenyellow solid 5px;background-color: hotpink;width: 200px; height: 200px;">
+        <p style="margin:20px; background-color: green;width: 100px; height: 100px;"></p>
+    </div>
+</body>
+
+</html>
