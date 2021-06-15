@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Html displays Starbuz page</title>
+
+    <style type="text/css">
+        header {
+            background-color: gray;
+            height: 150px;
+        }
+
+        header>p {
+            background-color: hotpink;
+            text-align: center;
+            position: relative;
+            top: 50%;
+        }
+
+        #tableContainer {
+            display: table;
+            width: 100%;
+        }
+
+        #tableRow {
+            display: table-row
+        }
+
+        section#drinks {
+            background-color: green;
+            height: 400px;
+            width: 20%;
+            display: table-cell;
+        }
+
+        section#main {
+            background-color: blueviolet;
+            height: 400px;
+            width: 50%;
+            display: table-cell;
+        }
+
+        section#sidebar {
+            background-color: yellow;
+            height: 400px;
+            width: 30%;
+            display: table-cell;
+        }
+
+        footer {
+            background-color: coral;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<header>
+    <p>Header</p>
+</header>
+
+<div id="tableContainer">
+    <div id="tableRow">
+        <section id="drinks">
+            <p>Drinks</p>
+        </section>
+
+        <section id="main">
+            <p>main</p>
+            <!-- 如果内容没有采用官方Internet 日期/时间格式来写，则必须有datatime属性 -->
+            <time datatime="2012-05-03">2021/5/3</time>
+            <!-- 2012-05 -->
+            <!-- 2012-05-03 09:00 -->
+            <!-- 2012-05-03 18:00 -->
+            
+            <!-- Z表示UTC时间，UTC=GMT -->
+            <!-- 2012-05-03 5:00Z -->
+            
+            <!-- 只有一个时间 -->
+            <!-- 05:00 -->
+        </section>
+
+        <section id="sidebar">
+            <p>SideBar</p>
+        </section>
+
+    </div>
+</div>
+
+<footer>
+    <p>Footer</p>
+    </div>
+
+</html>

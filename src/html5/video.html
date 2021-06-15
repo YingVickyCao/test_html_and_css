@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Video</title>
+    <style type="text/css">
+        video {
+            width: 512;
+            height: 288;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>This is an example of Video attribute</p>
+    <!--
+        controls : 提供操作的控件。不同浏览器提供的控件有所不同。
+
+        autoplay : 一旦页面，有了足够的数据就自动开始播放。视频网站加入这个属性不错，一般网站不需要。通常，用户希望参与决定加载页面是否播放视频。
+        bug：即使设置了autoplay，第一次不会自动播放，只能通过点击播放按钮才能播放。
+        fixed：使用muted。
+
+        width/height：页面中视频显示区的宽度和高度。如果设置了poster，海报图像也会缩放到指定的宽度和高度。视频也会保持其宽高比缩放，当边有多余的空间时，视频会采用上下或左右加黑边的模式来适应显示区大小，这样浏览器就不用时时缩放视频了。
+        poster：海报图像。视频未播放时，显示这个图片。通常，浏览器显示视频的第一帧，往往此时显示的是一个黑屏。通过设置poster，用这个特定的图像来消除短暂的黑屏显示。
+
+        preload 用于细粒度地控制视频如何加载，来实现优化。大多数情况下，浏览器会根据是否设置autoplay以及用户的带宽来选择加载多少视频。
+        preload="auto":让浏览器来决定。  
+        preload="none":在用户真正“播放”视频之前不下载视频。  
+        preload="metadata":下载视频元数据，但不下载视频内容。  
+    -->
+    <!-- <video muted controls autoplay src="../resources/video/tweetsip.webm"  width="288" height="288"
+        poster="../resources/images/blue.jpg">
+    </video> -->
+
+    <video muted controls autoplay width="512" height="288" poster="../resources/images/blue.jpg">
+        <!-- 使用source标记，包含不同格式的视频版本。
+        浏览器从上到下查找，直到找到它能播放的一种格式。
+        -->
+        <source src="../resources/video/tweetsip.webm">
+        <source src="../resources/video/tweetsip.ogv">
+        <source src="../resources/video/tweetsip.mp4">
+        <!-- 如果浏览器不支持视频，就显示这个文本。 -->
+        <p> Sorry,your broswer doesn't support the video element</p>
+    </video>
+
+    <video muted controls autoplay width="512" height="288" poster="../resources/images/blue.jpg">
+        <!-- 
+        type属性: 可选，提供视频的MIME类型（容器格式）。它向浏览器提供一个提示，帮助它确定是否播放这种文件。
+        codecs参数：可选，"视频编解码器，音频编解码器"
+        -->
+        <source src="../resources/video/tweetsip.webm" type='video/mp4;codecs="acv1.42E01,mp4a.40.2"'>
+        <source src="../resources/video/tweetsip.ogv" type='video/ogg;codecs="theora,vorbis"'>
+        <source src="../resources/video/tweetsip.mp4" type='video/webm;codecs=vp8,vorbis'>
+        <!-- 当所有source 都不支持时，将播放Flash视频 -->
+        <!-- <object>...</object> -->
+        <p> Sorry,your broswer doesn't support the video element</p>
+    </video>
+</body>
+</html>
