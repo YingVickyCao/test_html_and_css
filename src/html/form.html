@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Form</title>
+
+    <style type="text/css">
+        p {
+            color: seagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="http://wickedlysmart.com/hfhtmlcss/contest.php" method="POST">
+        <p>文本输入</p>
+        <!-- 文本输入 -->
+        First name: <input type="text" name="firstname" value="" />
+        <br />
+
+        Last name: <input type="text" name="lastname" value="" />
+        <br />
+        <br />
+
+        <!-- 提交输入 -->
+        <p>提交输入</p>
+        <input type="submit" />
+        <br />
+        <br />
+
+        <!-- 单选钮输入 -->
+        <p>单选钮输入</p>
+        <input type="radio" name="hotornot" value="hot" /> Hot
+        <br />
+
+        <input type="radio" name="hotornot" value="not" /> Not
+        <br />
+        <br />
+
+        <!-- 复选框输入 -->
+        <p>复选框输入</p>
+        <input type="checkbox" name="spice" value="Salt" /> Salt
+        <br />
+
+        <input type="checkbox" name="spice" value="Peper" />Peper
+        <br />
+
+        <input type="checkbox" name="spice" value="Garlic" />Garlic
+        <br />
+
+        <!-- 文本区：用于输入多行文本 -->
+        <p>文本区：用于输入多行文本</p>
+        <textarea>Find opportunities to reduce your Android app size by inspecting the contents of your app APK file, even if it wasn't built with Android Studio. Inspect the manifest file, resources, and DEX files. Compare two APKs to see how your app size changed between app versions.
+            </textarea>
+        <br />
+        <br />
+
+        <textarea name="comments" rows="10" cols="48">Find opportunities to reduce your Android app size by inspecting the contents of your app APK file, even if it wasn't built with Android Studio. Inspect the manifest file, resources, and DEX files. Compare two APKs to see how your app size changed between app versions.
+            </textarea>
+        <br />
+        <br />
+
+        <!-- 用于创建一个菜单，以供做出选择
+            select：菜单
+            option：菜单项
+            -->
+        <p>菜单</p>
+        <select name="characters">
+            <option value="Buckaroo"> Buckaroo Banzai</option>
+            <option value="Tommy">Perfect Tommy</option>
+            <option value="Penny">Penny Priddy</option>
+            <option value="Jersey">New Jersey</option>
+            <option value="John">John Parker</option>
+        </select>
+        <br />
+        <br />
+
+        <!-- 数字输入 -->
+        <p>数字输入</p>
+        <input type="number" min="0" max="20" />
+        <br />
+        <br />
+
+        <!-- 范围输入 -->
+        <p>范围输入</p>
+        <input type="range" min="0" max="100" />
+        <br />
+        <br />
+
+        <!-- 颜色输入 -->
+        <p>颜色输入</p>
+        <input type="color" />
+        <br />
+        </p>
+    </form>
+</body>
+
+</html>
