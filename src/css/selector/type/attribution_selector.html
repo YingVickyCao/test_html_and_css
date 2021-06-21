@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>属性选择器</title>
+
+    <style type="text/css">
+        /*  属性选择器：根据属性值来选择元素 */
+        /* img 设置了 width，则被img被选中 */
+        img[width] {
+            border: green 5px solid;
+        }
+
+        /* img 设置了 width="100px" ，则被img被选中*/
+        img[width="100px"] {
+            border: red 5px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="../../../resources/images/green.gif">
+    <br />
+
+    <img src="../../../resources/images/green.gif" width="100px" height="200px">
+    <br />
+
+    <img src="../../../resources/images/green.gif" width="50px" height="100px">
+</body>
+
+</html>

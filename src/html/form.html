@@ -15,26 +15,36 @@
 <body>
     <form action="http://wickedlysmart.com/hfhtmlcss/contest.php" method="POST">
         <p>文本输入</p>
-        <!-- 文本输入 -->
-        First name: <input type="text" name="firstname" value="" />
+        <!-- 单行文本输入 -->
+        First name: <input type="text" name="firstname" value="" maxlength="50" />
         <br />
 
         Last name: <input type="text" name="lastname" value="" />
         <br />
+
+        <!-- Placeholder 属性，表单中大多数不同类型的input 元素都可以使用placehold属性。 -->
+        <p>Placeholder 属性</p>
+        <input type="text" name="firstname" value="" placeholder="Please input first name" />
         <br />
 
-        <!-- 提交输入 -->
-        <p>提交输入</p>
-        <input type="submit" />
-        <br />
+        <!-- Required属性，可以用于任何表单控件
+            若浏览器支持该属性，如果没有为这个控件指定指，点击提交，会得到一个错误信息，表单不会提交服务器。
+            若浏览器不支持该属性，表单可以提交。
+        -->
+        <p>Required属性</p>
+        <input type="text" placeholder="Please input first name" required />
         <br />
 
         <!-- 单选钮输入 -->
-        <p>单选钮输入</p>
-        <input type="radio" name="hotornot" value="hot" /> Hot
-        <br />
-
-        <input type="radio" name="hotornot" value="not" /> Not
+        <p>单选钮输入
+            checked 是布尔属性，不需要值。有属性checked，这个输入控件就会选中。
+        </p>
+        <!-- <input type="radio" name="hotornot" value="hot" /> Hot
+        <input type="radio" name="hotornot" value="not" checked /> Not -->
+        <input type="radio" name="hotornot" value="hot" id="hot" />
+        <label for="hot">Hot</label>
+        <input type="radio" name="hotornot" value="not" checked id="not" />
+        <label for="not">Not</label>
         <br />
         <br />
 
@@ -43,10 +53,23 @@
         <input type="checkbox" name="spice" value="Salt" /> Salt
         <br />
 
-        <input type="checkbox" name="spice" value="Peper" />Peper
+        <input type="checkbox" name="spice" value="Peper" checked />Peper
         <br />
 
         <input type="checkbox" name="spice" value="Garlic" />Garlic
+        <br />
+
+        <p>复选框输入</p>
+        <!-- spice[]只是一个普通的表单元素名，名称中有没有括号对浏览器没有任何影响。
+            使用[]PHP服务器提示这个表单变量可能包含多个值。
+         -->
+        <input type="checkbox" name="spice[]" value="Salt" /> Salt
+        <br />
+
+        <input type="checkbox" name="spice[]" value="Peper" checked />Peper
+        <br />
+
+        <input type="checkbox" name="spice[]" value="Garlic" />Garlic
         <br />
 
         <!-- 文本区：用于输入多行文本 -->
@@ -67,10 +90,10 @@
             -->
         <p>菜单</p>
         <select name="characters">
-            <option value="Buckaroo"> Buckaroo Banzai</option>
+            <option value="Buckaroo" selected> Buckaroo Banzai</option>
             <option value="Tommy">Perfect Tommy</option>
             <option value="Penny">Penny Priddy</option>
-            <option value="Jersey">New Jersey</option>
+            <option value="Jersey" selected>New Jersey</option>
             <option value="John">John Parker</option>
         </select>
         <br />
@@ -84,6 +107,7 @@
 
         <!-- 范围输入 -->
         <p>范围输入</p>
+        <!-- 如果用户输入的值超出了设定范围，会得到一个错误的信息。 -->
         <input type="range" min="0" max="100" step="5" />
         <br />
         <br />
@@ -112,7 +136,7 @@
              url <input> 是一个文本输入元素。但在一些移动浏览器上，开入输入时用户会得到一个定制键盘。
          -->
         <p>url输入</p>
-        <input type="email" />
+        <input type="url" />
         <br />
 
         <!-- tel输入
@@ -120,6 +144,37 @@
          -->
         <p>tel输入</p>
         <input type="tel" />
+        <br />
+
+        <!-- password -->
+        <p>password </p>
+        <input type="password" name="secret" />
+
+        <!-- 文件输入 -->
+        <p>文件输入 </p>
+        <input type="file" name="doc" />
+
+        <!-- 组织元素 -->
+        <p>组织元素</p>
+        <fieldset>
+            <legend> Condiments</legend>
+            <input type="checkbox" name="spice" value="salt" /> Salt<br />
+            <input type="checkbox" name="spice" value="peper" />Pepper<br />
+            <input type="checkbox" name="spice" value="garlic" />Garlic<br />
+        </fieldset>
+        <br />
+        <fieldset>
+            <input type="checkbox" name="spice" value="salt" /> Salt<br />
+            <input type="checkbox" name="spice" value="peper" />Pepper<br />
+            <input type="checkbox" name="spice" value="garlic" />Garlic<br />
+        </fieldset>
+
+        <!-- 提交输入 -->
+        <p>提交输入</p>
+        <!-- <input type="submit" /> -->
+        <!-- value 属性改变按钮上显示的文本 -->
+        <input type="submit" value="Send" />
+        <br />
         <br />
     </form>
 </body>
