@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>交互性</title>
+
+    <script>
+        window.onload = init;
+
+        function init() {
+            var submitBtn = document.getElementById("submitbutton");
+            submitBtn.onclick = validBid;
+        }
+        function validBid() {
+            if (document.getElementById("bid").value > 0) {
+                document.getElementById("theForm").submit();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form id="theForm" method="POST" action="http://starbuzzcoffee.com/processorder.php">
+        <input type="number" id="bid" value="0"><br />
+        <input type="button" id="submitbutton" value="Bid"><br />
+    </form>
+</body>
+
+</html>
