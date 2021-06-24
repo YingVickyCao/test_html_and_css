@@ -1,4 +1,4 @@
-import * as json1 from './movies.json';
+import * as json1 from './movies.json.js';
 import json2 from './movies';
 
 export function json() {
