@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Add React to Website</title>
+    <!--  https://reactjs.org/docs/add-react-to-a-website.html  -->
+
+      <!-- 
+        React - the React top level API
+        React DOM - adds DOM-specific methods
+        Babel - a JavaScript compiler that lets us use ES6+ in old browsers 
+    -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+
+<body>
+    <p>This is a simple html</p>
+    <p>Add React to Website</p>
+
+    <div id="like_button_container"></div>
+
+</body>
+
+</html>
+<!-- Load React Component -->
+<script type="text/babel">
+    function LikeButton() {
+        // Hook method, [get , set]
+        const [liked, setLiked] = React.useState(false);
+
+        if (liked) {
+            return "You liked this.";
+        }
+        return (
+            <button onClick={() => setLiked(true)}> Like </button>
+        )
+    }
+
+    const domContainer = document.querySelector('#like_button_container');
+    ReactDOM.render(<div><LikeButton /></div>, domContainer);
+</script>

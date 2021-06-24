@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>原型式继承 —— prototypal inheritance</title>
+    </head>
+    <body>
+
+        <script>
+            // https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Inheritance
+            // 构造函数里运行了Person()构造函数
+            function Person(first, last, age, gender, interests) {
+                this.name = {
+                    first,
+                    last
+                };
+                this.age = age;
+                this.gender = gender;
+                this.interests = interests;
+            }
+
+            Person.prototype.greeting = function () {
+                alert('Hi! I\'m ' + this.name.first + '.');
+            };
+            Person.prototype;
+
+            function Teacher(first, last, age, gender, interests, subject) {
+                // 在Teacher()构造函数里运行了Person()构造函数
+                Person.call(this, first, last, age, gender, interests);
+                this.subject = subject;
+            }
+
+            Teacher.prototype;
+
+
+            // 从无参构造函数继承
+            function Brick() {
+                this.width = 10;
+                this.height = 20;
+            }
+
+            function BlueGlassBrick() {
+                Brick.call(this);
+
+                this.opacity = 0.5;
+                this.color = 'blue';
+            }
+
+            BlueGlassBrick.prototype;   // 构造器默认有一个空的原型属性
+            BlueGlassBrick.color;  // undefined
+
+            // 设置 Teacher() 的原型和构造器引用
+            // 让Teacher()从Person()的原型对象里继承原型所有属性和方法:将Person.prototype创建一个新的原型所有属性和方法， 作为 Teacher.prototype的所有属性和方法
+            Teacher.prototype = Object.create(Person.prototype);
+            Teacher.prototype;
+            Teacher.prototype.constructor;
+
+            // 将Teacher()的prototype constructor 属性指向Person()。改为指向Teacher()
+            Teacher.prototype.constructor = Teacher;
+            Teacher.prototype;
+            Teacher.prototype.constructor;
+
+            Teacher.prototype.constructor = Teacher;
+            Teacher.prototype;
+            Teacher.prototype.constructor;
+
+            Teacher.prototype.greeting = function () {
+                var prefix = 'Max';
+            };
+            Teacher.prototype;
+            Teacher.prototype.constructor;
+
+        </script>
+    </body>
+</html>

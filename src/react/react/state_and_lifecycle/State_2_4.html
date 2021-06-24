@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> State and Lifecycle </title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
+
+<script type="text/babel">
+    var count = 1;
+
+    class MyButton extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { num: 1 };
+        }
+
+        /*
+        render:this.state.num=1
+
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        render:this.state.num=2
+        */
+        onClickBtn() {
+            console.log("onClickBtn,this.state.num[1]=" + this.state.num);
+            // Wrong
+            this.setState({
+                num: this.state.num + this.props.increment,
+            });
+            console.log("onClickBtn,this.state.num[2]=" + this.state.num);
+        }
+
+        /*
+        render:this.state.num=1
+
+        onClickBtn,this.state.num[1]=1
+        render:this.state.num=2
+        onClickBtn,this.state.num[2]=2
+         */
+        onClickBtn2() {
+            console.log("onClickBtn,this.state.num[1]=" + this.state.num);
+
+            // Correct：常规函数
+            // this.setState(function (state, props) {
+            //     return {
+            //         num: state.num + props.increment,
+            //     }
+            // }, () => {
+            //     console.log("onClickBtn,this.state.num[2]=" + this.state.num);
+            // });
+
+            // Correct: 箭头函数
+            this.setState((state, props) => {
+                return { num: state.num + props.increment, }
+            }, () => {
+                console.log("onClickBtn,this.state.num[2]=" + this.state.num);
+            });
+        }
+        render() {
+            console.log("render:this.state.num=" + this.state.num);
+            return (
+                <p style={{ backgroundColor: "#ff0000", with: "100px", height: "50px" }
+                } type="primary" onClick={this.onClickBtn2.bind(this)} > Click this button,{this.state.num} </p >
+            );
+        }
+    }
+    ReactDOM.render(<MyButton increment={1} />, document.getElementById('root'));
+</script>

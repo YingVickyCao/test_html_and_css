@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> State and Lifecycle </title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
+
+<script type="text/babel">
+    var count = 1;
+
+    class MyButton extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { num: 1 };
+        }
+
+        /**
+        render:this.state.num=1
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        onClickBtn,this.state.num[1]=1
+        onClickBtn,this.state.num[2]=1
+        render:this.state.num=11
+        */
+        onClickBtn() {
+            for (let i = 0; i < 10; i++) {
+                console.log("onClickBtn,this.state.num[1]=" + this.state.num);
+                this.setState(function (state) {
+                    return {
+                        num: state.num + 1,
+                    }
+                });
+                console.log("onClickBtn,this.state.num[2]=" + this.state.num);
+            }
+        }
+
+        /*
+        render:this.state.num=1
+        10 onClickBtn,this.state.num[1]=1
+        render:this.state.num=11
+        10 onClickBtn,this.state.num[2]=11
+         */
+        // 多个setState调用会合并处理
+        // for 循环中，React 合并setState更新State操作，然后执行render()。render结束后，在回调方法中通知更新完毕。˝
+        onClickBtn2() {
+            for (let i = 0; i < 10; i++) {
+                console.log("onClickBtn,this.state.num[1]=" + this.state.num);
+                this.setState(function (state) {
+                    return {
+                        num: state.num + 1,
+                    }
+                }, () => {
+                    console.log("onClickBtn,this.state.num[2]=" + this.state.num);
+                });
+
+            }
+        }
+        render() {
+            console.log("render:this.state.num=" + this.state.num);
+            return (
+                <p style={{ backgroundColor: "#ff0000", with: "100px", height: "50px" }
+                } type="primary" onClick={this.onClickBtn2.bind(this)} > Click this button,{this.state.num} </p >
+            );
+        }
+    }
+    ReactDOM.render(<MyButton />, document.getElementById('root'));
+</script>

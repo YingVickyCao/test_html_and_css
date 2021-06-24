@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Class</title>
+    </head>
+    <body>
+
+        <script>
+            // let person = {
+            //     name: "Tom Jerry",
+            //     name2: {
+            //         first: "Tom",
+            //         last: "Jerry",
+            //     },
+            //     age: 19,
+            //     interests: ['music', 'skiing'],
+            //     info: function () {
+            //         console.log(this.name + "  " + this.age + "  " + this.interests[0] + "  " + this.interests[1]);
+            //     }
+            // };
+
+            //  使用函数创建一个对象
+            function createNewPerson(name) {
+                let obj = {};
+                obj.name = name;
+                obj.info = function () {
+                    console.log(this.name);
+                };
+                return obj;
+            }
+
+            let p1 = createNewPerson('P1');
+            p1.name;
+            p1.info();
+
+            //  使用构造函数创建一个对象
+            function Person(name, firstName, secondName, age, interests) {
+                this.name = name;
+                this.name2 = {
+                    first: firstName,
+                    last: secondName,
+                };
+                this.age = age;
+                this.interests = interests;
+                this.info = function () {
+                    console.log(this.name);
+                };
+            }
+
+            let p2 = new Person('P2 Tom', "P2", "Tom", 19, ['music', 'skiing']);
+            let p3 = new Person('P3 Tom', "P2", "Tom", 18, ['game', 'running']);
+            p2.name;                // P2 Tom
+            p2['age'];              // 19
+            p2["interests"][1];     // skiing
+            p2.interests[1];        // skiing
+            p2.info();
+            p3.name;                // P3 Tom
+            p3.info();              // running
+
+            // 使用Object() 构造函数
+            let p4 = new Object();
+            p4.name = 'P4 Tom';
+            p4['age'] = 19;
+            p4.info = function () {
+                console.log(this.name);
+            };
+            p4.name;
+
+            let p5 = new Object({
+                name: "P5 Tom",
+                age: 20,
+                info: function () {
+                    console.log(this.name);
+                }
+            });
+            p5.name;
+
+            // 使用 create() 方法
+            let p6 = Object.create(p5);
+            p6.name;
+
+        </script>
+    </body>
+</html>

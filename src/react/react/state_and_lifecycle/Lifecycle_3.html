@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> State and Lifecycle </title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+    <style>
+        body {
+            background-color: green;
+        }
+
+        /* .h1 {
+            color: red;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
+
+<script type="text/babel">
+    //  Make Clock Component as a class
+    class Clock extends React.Component {
+        render() {
+            return (
+                <div id="data">
+                    <h1 >Hello World</h1>
+                    <h2 >time is {this.props.date.toLocaleTimeString()}</h2>
+                </div>
+            );
+        }
+    }
+    function tick() {
+        ReactDOM.render(<Clock date={new Date()} />, document.getElementById('root'));
+    }
+    setInterval(tick, 1000);
+</script>

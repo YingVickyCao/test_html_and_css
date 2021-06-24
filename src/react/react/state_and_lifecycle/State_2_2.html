@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> State的更新是异步和延迟的 </title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
+
+<script type="text/babel">
+    var count = 1;
+
+    class MyButton extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { num: 1 };
+        }
+
+        /*
+            // Render when enter this page
+            render:this.state.num=1
+
+            // Click button
+            onClickBtn,this.state.num[1]=1
+            onClickBtn,this.state.num[2]=1
+            onClickBtn,this.state.num[1]=1
+            onClickBtn,this.state.num[2]=1
+            onClickBtn,this.state.num[1]=1
+            onClickBtn,this.state.num[2]=1
+            onClickBtn,this.state.num[1]=1
+            onClickBtn,this.state.num[2]=1
+            onClickBtn,this.state.num[1]=1
+            onClickBtn,this.state.num[2]=1
+            onClickBtn,this.state.num[1]=1
+            onClickBtn,this.state.num[2]=1
+            onClickBtn,this.state.num[1]=1
+            onClickBtn,this.state.num[2]=1
+            onClickBtn,this.state.num[1]=1
+            onClickBtn,this.state.num[2]=1
+            onClickBtn,this.state.num[1]=1
+            onClickBtn,this.state.num[2]=1
+            onClickBtn,this.state.num[1]=1
+            onClickBtn,this.state.num[2]=1
+            // Render after click button
+            render:this.state.num=2
+        */
+        onClickBtn() {
+            for (let i = 0; i < 10; i++) {
+                console.log("onClickBtn,this.state.num[1]=" + this.state.num);
+                this.setState({
+                    num: this.state.num + 1,
+                });
+                console.log("onClickBtn,this.state.num[2]=" + this.state.num);
+            }
+        }
+
+        /**
+         render:this.state.num=1
+         10 onClickBtn,this.state.num[1]=1
+         render:this.state.num=2
+         10 onClickBtn,this.state.num[2]=2
+         */
+        // 多个setState调用会合并处理
+        onClickBtn2() {
+            for (let i = 0; i < 10; i++) {
+                console.log("onClickBtn,this.state.num[1]=" + this.state.num);
+                this.setState({
+                    num: this.state.num + 1,
+                }, () => {
+                    // 在回调函数中，实时获取到更新之后的数据
+                    console.log("onClickBtn,this.state.num[2]=" + this.state.num);
+                });
+
+            }
+        }
+
+        render() {
+            console.log("render:this.state.num=" + this.state.num);
+            return (
+                <p style={{ backgroundColor: "#ff0000", with: "100px", height: "50px" }
+                } type="primary" onClick={this.onClickBtn2.bind(this)} > Click this button,{this.state.num} </p >
+            );
+        }
+    }
+    ReactDOM.render(<MyButton />, document.getElementById('root'));
+</script>

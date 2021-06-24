@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>阻止默认行为</title>
+    </head>
+    <body>
+
+        <form>
+            <div>
+                <label for="name">Name</label>
+                <input id="name" type="text"/>
+            </div>
+
+            <div>
+                <input id="submit" type="submit"/>
+            </div>
+        </form>
+
+        <p></p>
+
+        <script>
+            const form = document.querySelector('form');
+            let nameInput = document.getElementById('name');
+            let p = document.querySelector('p');
+
+            form.onsubmit = function (e) {
+                if (nameInput.value === ' ' || nameInput.value === "") {
+                    e.preventDefault();
+                    p.textContent = "Must fill in name";
+
+                }
+            };
+        </script>
+    </body>
+</html>

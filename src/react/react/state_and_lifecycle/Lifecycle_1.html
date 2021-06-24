@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> State and Lifecycle </title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+    <style>
+        body {
+            background-color: green;
+        }
+
+        .h1 {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
+
+<script type="text/babel">
+    function tick() {
+        const element = (
+            <div id="data">
+                <h1 >Hello World</h1>
+                <h2 >time is {new Date().toLocaleTimeString()}</h2>
+            </div>
+        );
+        ReactDOM.render(element, document.getElementById('root'));
+    }
+    setInterval(tick, 1000);
+</script>
+<!-- <script type="text/babel">
+
+    var count = 0;
+    function tick() {
+        count++;
+        console.log(count);
+        var divColor = '#ff0000';
+        if(count % 2== 0){
+            divColor = '#ff0000'
+        }
+        else{
+            divColor = '#0000ff'
+        }
+
+        const element = (
+            <div id="data">
+                <h1 >Hello World</h1>
+                <h2  style={{color:divColor}}>time is {new Date().toLocaleTimeString()}</h2>
+            </div>
+        );
+        ReactDOM.render(element, document.getElementById('root'));
+    }
+    setInterval(tick, 1000);
+</script> -->
+
+<!-- TODO : 如何证明整个页面是每秒刷新？ -->

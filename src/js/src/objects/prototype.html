@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>prototype</title>
+    </head>
+    <body>
+        <script>
+
+            // https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Object_prototypes
+            function doSomething() {
+            }
+
+            console.log(doSomething.prototype);
+
+
+            doSomething.prototype.foo = "bar";
+            console.log(doSomething.prototype);
+
+            // doSomeInstancing 的 __proto__ 属性就是doSomething.prototype
+            let doSomeInstancing = new doSomething();
+            doSomeInstancing.somevalue = "some value"; // add a property onto the object
+            console.log(doSomeInstancing);
+            console.log(doSomeInstancing.mm);   // undefined
+
+            let doSomething2 = function () {
+            };
+            console.log(doSomething2.prototype);
+            doSomething.prototype.foo = "bar2";
+            doSomething.foo = "bar2";
+
+            doSomething2.constructor;       // ƒ Function() { [native code] }
+            doSomething2.constructor.name;  // "Function"
+        </script>
+    </body>
+</html>

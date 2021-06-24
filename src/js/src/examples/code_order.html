@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Code order</title>
+    </head>
+    <body>
+        <button id="btn">Click me</button>
+
+        <script>
+
+            // const btn = document.getElementById('btn');
+            btn.addEventListener('click', clickBtn);
+
+            // Uncaught ReferenceError: Cannot access 'btn' before initialization
+            const btn = document.getElementById('btn');
+
+            function clickBtn() {
+                alert("Clicked button");
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> add JavaScript to page</title>
+
+        <!-- Method 1 : Internal JavaScript
+            DOMContentLoaded:即 HTML 文档体加载、解释完毕事件。
+        -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const btn = document.getElementById('btn1');
+                btn.addEventListener('click', clickBtn1);
+
+                function clickBtn1() {
+                    alert("Clicked button 1");
+                }
+            });
+        </script>
+
+        <!-- Method 2 : External JavaScript -->
+        <!-- defer -->
+        <!--        <script src="add_js_to_page.js" defer></script>-->
+        <!-- async :
+            1) 它告知浏览器在遇到 <script> 元素时不要中断后续 HTML 内容的加载
+            2) 只能用于外部脚本
+         -->
+        <script src="add_js_to_page.js" async></script>
+    </head>
+    <body>
+        <!-- Method 1 : Internal JavaScript -->
+        <button id="btn1">Click button 1</button>
+
+        <!-- Method 2 : External JavaScript -->
+        <button id="btn2">Click button 2</button>
+
+        <!-- Method 3 : Inline JavaScript handlers -->
+        <button onclick="clickBtn3()">Click button 3</button>
+
+        <!-- Method 4 : 事件处理器属性 -->
+        <button id="btn4">Click button 4</button>
+    </body>
+</html>

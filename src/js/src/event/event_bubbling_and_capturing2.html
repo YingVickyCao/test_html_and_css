@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Show video box example</title>
+        <style>
+            div {
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 480px;
+                height: 380px;
+                border-radius: 10px;
+                background-color: #eee;
+                background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+            }
+
+            .hidden {
+                left: -50%;
+            }
+
+            .showing {
+                left: 50%;
+
+            }
+
+            div p {
+                display: block;
+                width: 300px;
+                height: 300px;
+                margin: 40px auto;
+                background-color: red;
+                alignment: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button>Display video</button>
+
+        <div class="hidden">
+            <p>
+
+            </p>
+        </div>
+
+        <script>
+
+            const btn = document.querySelector('button');
+            const videoDiv = document.querySelector('div');
+            const video = document.querySelector('p');
+
+            btn.onclick = function () {
+                console.log("btn clicked");
+                videoDiv.setAttribute('class', 'showing');
+            };
+
+            videoDiv.onclick = function () {
+                console.log("videoDiv clicked,start");
+                videoDiv.setAttribute('class', 'hidden');
+                video.textContent = "";
+                console.log("videoDiv clicked,end");
+            };
+
+            // video.onclick = function () {
+            //     console.log("video clicked,start");
+            //     video.play();
+            //     console.log("video clicked,end");
+            // };
+
+            video.onclick = function (e) {
+                // 当在事件对象上调用该函数时，它只会让当前事件处理程序运行，但事件不会在冒泡链上进一步扩大，因此将不会有更多事件处理器被运行(不会向上冒泡)。
+                e.stopPropagation();
+
+                console.log("video clicked,start");
+                video.textContent = "Playing";
+                console.log("video clicked,end");
+            };
+
+        </script>
+    </body>
+</html>

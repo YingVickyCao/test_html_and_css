@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>State的更新是异步和延迟的</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+    <style>
+        body {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
+
+<script type="text/babel">
+    var count = 1;
+
+    class MyButton extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { name: "Tom" };
+        }
+
+        // React State Updates may be Asynchronous;
+        // 证明React State的更新是异步。
+        // 原因：因为，每次setState都会触发更新。异步是为了提高性能，将多个状态合并一起更新，较少re-render调用。
+        /*
+            render:this.state.name=Tom
+            onClickBtn，this.state.name=Tom
+            onClickBtn，this.state.name=Tom
+            render:this.state.name=Jerry
+         */
+        onClickBtn() {
+            console.log("onClickBtn，this.state.name=" + this.state.name);   // Tom
+            this.setState({
+                name: "Jerry"
+            });
+            console.log("onClickBtn，this.state.name=" + this.state.name);   // Tom
+        }
+
+        // 如何解决setState的异步问题？后面跟一个回调方法：先保存，后调用
+        /*
+            render:this.state.name=Tom
+            onClickBtn，this.state.name=Tom
+            render:this.state.name=Jerry
+            onClickBtn，this.state.name=Jerry
+        */
+        onClickBtn2() {
+            console.log("onClickBtn，this.state.name=" + this.state.name);   // Tom
+            this.setState({
+                name: "Jerry"
+            }, () => {
+                // 在回调函数中，实时获取到更新之后的数据
+                console.log("onClickBtn，this.state.name=" + this.state.name);   // Jerry
+            });
+        }
+
+        render() {
+            console.log("render:this.state.name=" + this.state.name);
+            return (
+                <p type="primary" onClick={this.onClickBtn.bind(this)}>Click this button</p>
+            );
+        }
+    }
+    ReactDOM.render(<MyButton />, document.getElementById('root'));
+</script>
