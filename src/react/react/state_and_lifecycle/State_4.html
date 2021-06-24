@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title> State : The Data Flows Down </title>
+    <title> The Data Flows Down </title>
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
@@ -18,51 +18,33 @@
 </html>
 
 <script type="text/babel">
-
-    // The Data Flows Down
     class MyButton extends React.Component {
         constructor(props) {
             super(props);
-            this.state = {
-                postId: 1,
-                comment: "XYZ",
-            };
         }
-
-        /*
-        onClickPostId,[1] postId=1,comment=XYZ
-        onClickPostId,[2] postId=1,comment=XYZ
-        render,postId=2,comment=XYZ
-        
-        onClickComment,[1] postId=2,comment=XYZ
-        onClickComment,[2] postId=2,comment=XYZ
-        render,postId=2,comment=XYZ + ABC
-        */
-        onClickPostId() {
-            console.log("onClickPostId,[1] postId=" + this.state.postId + ",comment=" + this.state.comment);
-            this.setState({
-                postId: this.state.postId + 1,
-            });
-            console.log("onClickPostId,[2] postId=" + this.state.postId + ",comment=" + this.state.comment);
-        }
-
-        onClickComment() {
-            console.log("onClickComment,[1] postId=" + this.state.postId + ",comment=" + this.state.comment);
-            this.setState({
-                comment: this.state.comment + " + ABC",
-            });
-            console.log("onClickComment,[2] postId=" + this.state.postId + ",comment=" + this.state.comment);
-        }
-
         render() {
-            console.log("render,postId=" + this.state.postId + ",comment=" + this.state.comment);
+            // render,num1=2,num2=2
+            console.log("render,num1=" + this.props.data.num1 + ",num2=" + this.props.data.num1);
             return (
-                <div>
-                    <p style={{ backgroundColor: "#ff0000", with: "100px", height: "50px" }} type="primary" onClick={this.onClickPostId.bind(this)} > Click PostId,{this.state.postId} </p >
-                    <p style={{ backgroundColor: "#00ff00", with: "100px", height: "50px" }} type="primary" onClick={this.onClickComment.bind(this)} > Click comment,{this.state.comment} </p >
-                </div>
+                <p> This is a example of Data Flows Down</p >
             );
         }
     }
-    ReactDOM.render(<MyButton />, document.getElementById('root'));
+
+    class MyDiv extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                data: {
+                    num1: 2,
+                    num2: 5,
+                }
+            }
+
+        }
+        render() {
+            return (<MyButton data={this.state.data} />);
+        }
+    }
+    ReactDOM.render(<MyDiv />, document.getElementById('root'));
 </script>
