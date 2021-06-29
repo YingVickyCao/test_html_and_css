@@ -20,23 +20,27 @@
             this.state = {
                 isToogle: true,
             }
-            // Way 1 : Call  bind
-            // This binding is necessary to make 'this' work in the onClick callback.
-            this.handClick = this.handClick.bind(this);
         }
 
+        // TODO: 不能打断点
+        // Way 4 Depressed. Use arrow function in the callback
         handClick() {
             console.log('handClick this:' + this);
-            
             this.setState(function (prevState) {
                 return {
                     isToogle: !prevState.isToogle,
                 }
             });
         }
-        // Way 1 :
+
         render() {
-            return (<button onClick={this.handClick}>
+            // Problem: 
+            // With this syntax that a different callback is created each time when Component renders. In most cases,this is fine. 
+            // But If the callback is passed as prop to lower components, those components may do an extra rendering.
+
+            // Q : 为什么每次render会重新create handClick callback？
+            // 因为 () => this.handClick()是一个匿名函数，每次render 都要重新创建一个新的handClick callback实例。
+            return (<button onClick={() => this.handClick()}>
                 {this.state.isToogle ? "ON" : "OFF"}
             </button>);
         }

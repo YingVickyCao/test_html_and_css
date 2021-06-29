@@ -22,11 +22,7 @@
             }
         }
 
-        // Way 3: Recommended. Use class fields to bind callback
-        // This syntax ensures 'this' is bound within handleClick.
-        handClick = () => {
-            // this = Toggle instance
-            console.log('this is :', this);
+        handClick() {
             this.setState(function (prevState) {
                 return {
                     isToogle: !prevState.isToogle,
@@ -34,9 +30,10 @@
             });
         }
 
+        // Way 2 : Call  bind
         render() {
-            // Way 3
-            return (<button onClick={this.handClick}>
+            // Depressed:  因为每次render都重新绑定handClick。
+            return (<button onClick={this.handClick.bind(this)}>
                 {this.state.isToogle ? "ON" : "OFF"}
             </button>);
         }

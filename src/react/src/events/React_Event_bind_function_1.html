@@ -20,6 +20,12 @@
             this.state = {
                 isToogle: true,
             }
+            // Way 1 : Call  bind
+            // If callback函数很少，推荐使用.
+            // If callback函数很多，不推荐使用。因为要写很多类似 this._handClick 的变量。
+            // 只绑定_handClick1次。
+            // This binding is necessary to make 'this' work in the onClick callback.
+            this._handClick = this.handClick.bind(this);
         }
 
         handClick() {
@@ -29,10 +35,10 @@
                 }
             });
         }
-
-        // Way 2 : Call  bind
         render() {
-            return (<button onClick={this.handClick.bind(this)}>
+            // 读取变量 this._handClick
+            // button 里面的this 本来指向button这个上下文。上面使用bind，把this强制指向了Toggle。
+            return (<button onClick={this._handClick}>
                 {this.state.isToogle ? "ON" : "OFF"}
             </button>);
         }
