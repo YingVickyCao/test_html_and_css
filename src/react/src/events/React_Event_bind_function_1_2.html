@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> State Updates are Merged </title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
+<script type="text/babel">
+    class Toggle extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                isToogle: true,
+            }
+        }
+
+        handClick() {
+            this.setState(function (prevState) {
+                return {
+                    isToogle: !prevState.isToogle,
+                }
+            });
+        }
+
+        // Way 2 : Call  bind
+        render() {
+            return (<button onClick={this.handClick.bind(this)}>
+                {this.state.isToogle ? "ON" : "OFF"}
+            </button>);
+        }
+    }
+
+    ReactDOM.render(<Toggle />, document.getElementById('root'));
+</script>

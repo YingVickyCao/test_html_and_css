@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> State Updates are Merged </title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
+<script type="text/babel">
+    // Handling events with React elements VS handling events on DOM elements. 
+    // (1) React events are named using camelCase.
+    // (2)With JSX you pass a function as the event handler.
+    // ReactDOM.render(<button onClick={clickBtn}>Click this button</button>, document.getElementById('root'));
+
+    function clickBtn() {
+        console.log("button clicked");
+    }
+
+    // (3)Return false to prevent default behavior in React
+    function Form() {
+        function submitClick(e) {
+            e.preventDefault();
+            console.log("submit clicked");
+        }
+        return (
+            <form onSubmit={submitClick}>
+                <button type="submit">Submit</button>
+            </form>
+        );
+    }
+    ReactDOM.render(<Form />, document.getElementById('root'));
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>handling events on DOM elements. </title>
+</head>
+
+<body>
+    <!-- (1)DOM events are named using lowercase. -->
+    <!-- (2)you pass a string as the event handler -->
+    <button onclick="clickBtn()">Click this button</button>
+
+    <!-- (3)Return false to prevent default behavior in DOM -->
+    <form onsubmit="console.log('submit clicked');return false">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
+
+<script>
+    function clickBtn() {
+        console.log("button clicked");
+    }
+</script>
