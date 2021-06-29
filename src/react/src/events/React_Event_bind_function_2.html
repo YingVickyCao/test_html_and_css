@@ -30,7 +30,7 @@
             });
         }
 
-        // Way 2 : Call  bind
+        // Way 2 : Call  Function.prototype.bind
         render() {
             // Depressed:  因为每次render都重新绑定handClick。
             return (<button onClick={this.handClick.bind(this)}>
