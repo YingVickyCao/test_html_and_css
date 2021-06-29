@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Conditional Rendering</title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
+<script type="text/babel">
+    function WarningBanner(props) {
+        if (!props.warn) {
+            // Way 5 : Preventing Component from Rendering
+            // If want to hide itself, return null, then WarningBanner component does not render.
+            return null;
+        }
+
+        return (
+            <div>Warning !</div>
+        );
+    }
+
+    class Page extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { showWarning: true };
+            this._handleToggleClick = this.handleToggleClick.bind(this);
+        }
+
+        handleToggleClick() {
+            this.setState(function (prevState) {
+                return {
+                    showWarning: !prevState.showWarning,
+                }
+            });
+        }
+
+        render() {
+            return (
+                <div>
+                    <WarningBanner warn={this.state.showWarning} />
+                    <button onClick={this._handleToggleClick}>
+                        {this.state.showWarning ? 'Hide' : 'Show'}
+                    </button>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<Page />, document.getElementById('root'));
+</script>

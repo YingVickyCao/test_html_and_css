@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title> How to bind function in React? </title>
+    <title> Conditional Rendering </title>
     <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
@@ -22,7 +22,7 @@
     }
 
     function Greeting(props) {
-        // render a different greeting depends on the value of isLoginedIn in props.
+        // Way 1 : render a different greeting depends on the value of isLoginedIn in props.
         const isLoginedIn = props.isLoginedIn;
         if (isLoginedIn) {
             return <UserGreeting />

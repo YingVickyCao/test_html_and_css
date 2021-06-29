@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title> How to bind function in React? </title>
+    <title> Conditional Rendering</title>
     <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
@@ -14,22 +14,6 @@
 
 </html>
 <script type="text/babel">
-    function UserGreeting(props) {
-        return <h1>Welcome back</h1>
-    }
-    function GuestGreeting(props) {
-        return <h1>Please login in</h1>
-    }
-
-    function Greeting(props) {
-        // render a different greeting depends on the value of isLoginedIn in props.
-        const isLoginedIn = props.isLoginedIn;
-        if (isLoginedIn) {
-            return <UserGreeting />
-        }
-        return <GuestGreeting />
-    }
-
     function LoginButton(props) {
         return (
             <button onClick={props.onClick}>Login</button>
@@ -60,21 +44,16 @@
             })
         }
 
-        // TODO： 组件套组件？是要写在组件内部，与它平级
+        // Way 4 : Inline If-Else with Conditional Operator
+        // https://codepen.io/gaearon/pen/Xjoqwm?editors=0010
         render() {
-            const isLoginedIn = this.state.isLoginedIn;
-            let button;
-            if (isLoginedIn) {
-                button = <LogoutButton onClick={this._handleLoginoutClick} />
-            }
-            else {
-                button = <LoginButton onClick={this._handleLoginClick} />
-            }
-            // Element Variables: {button}
             return (
                 <div>
-                    <Greeting isLoginedIn={isLoginedIn} />
-                    {button}
+                    <p>TBD : This P not changed when render() invoked.</p>
+                    {this.state.isLoginedIn
+                        ? <LogoutButton onClick={this._handleLoginoutClick} />
+                        : <LoginButton onClick={this._handleLoginClick} />
+                    }
                 </div>
             );
         }
