@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> How to bind function in React? </title>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>
+<script type="text/babel">
+    function UserGreeting(props) {
+        return <h1>Welcome back</h1>
+    }
+    function GuestGreeting(props) {
+        return <h1>Please login in</h1>
+    }
+
+    function Greeting(props) {
+        // render a different greeting depends on the value of isLoginedIn in props.
+        const isLoginedIn = props.isLoginedIn;
+        if (isLoginedIn) {
+            return <UserGreeting />
+        }
+        return <GuestGreeting />
+    }
+    ReactDOM.render(<Greeting isLoginedIn={true} />, document.getElementById('root'));
+</script>
