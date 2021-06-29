@@ -23,7 +23,7 @@
         }
 
         // click is ok
-        handleClick(id) {
+        handleClick = (id) => {
             // id = 5
             // this = Toggle
             console.log('handClick this:' + this);
@@ -32,9 +32,9 @@
 
         render() {
             return (
-                //  Depressed : Use Function.prototype.bind
+                //  Way 3: Recommended. Use class fields to bind callback
                 <div>
-                    <button onClick={this.handleClick.bind(this, 5)}>
+                    <button onClick={this.handleClick.bind(this,5)}>
                         Click Button
                     </button>
                     <br />

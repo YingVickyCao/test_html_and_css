@@ -19,6 +19,7 @@
             super(props);
         }
 
+        // not ok
         handleClick(id) {
             // id = 5
             // this = Toggle
@@ -28,7 +29,11 @@
 
         render() {
             // Way 4 Depressed. Use arrow function in the callback
-            return (<button onClick={(e) => this.handClick(10, e)}>
+            // return (<button onClick={(e) => this.handClick(10, e)}>
+            //     Click Button
+            // </button>);
+
+            return (<button onClick={() => this.handClick(10)}>
                 Click Button
             </button>);
         }
