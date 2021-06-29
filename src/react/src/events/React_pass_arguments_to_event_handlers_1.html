@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title> How to bind function in React? </title>
+    <title> React passing arguments to event handlers</title>
     <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
@@ -14,37 +14,29 @@
 
 </html>
 <script type="text/babel">
-    class Toggle extends React.Component {
+    class MyButton extends React.Component {
         constructor(props) {
             super(props);
-            this.state = {
-                isToogle: true,
-            }
         }
 
-        // Way 3: Recommended. 
-        // Use class fields to bind callback
-        // This syntax ensures 'this' is bound within handleClick.
-        // 只绑定1次。
-        // ES6 自己内部绑定了this 为Toggle
         handClick = () => {
             // this = Toggle instance
             console.log('this is :', this);
-            this.setState(function (prevState) {
-                return {
-                    isToogle: !prevState.isToogle,
-                }
-            });
+            // this.setState(function (prevState) {
+            //     return {
+            //         isToogle: !prevState.isToogle,
+            //     }
+            // });
         }
 
         render() {
             // Way 3 
             // handClick = () => 只被新建一次。this.handClick 想等于 直接读取被创建后的地址。
             return (<button onClick={this.handClick}>
-                {this.state.isToogle ? "ON" : "OFF"}
+               Button
             </button>);
         }
     }
 
-    ReactDOM.render(<Toggle />, document.getElementById('root'));
+    ReactDOM.render(<MyButton />, document.getElementById('root'));
 </script>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title> How to bind function in React? </title>
+    <title> React passing arguments to event handlers</title>
     <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
@@ -22,20 +22,26 @@
             }
         }
 
-        handClick() {
-            this.setState(function (prevState) {
-                return {
-                    isToogle: !prevState.isToogle,
-                }
-            });
+        handleClick(id) {
+            // id = 5
+            // this = Toggle
+            console.log('handClick this:' + this);
+            console.log('handClick this:' + id);
         }
 
-        // Way 2 : Call  bind
         render() {
-            // Depressed:  因为每次render都重新绑定handClick。
-            return (<button onClick={this.handClick.bind(this)}>
-                {this.state.isToogle ? "ON" : "OFF"}
-            </button>);
+            return (
+                //  Depressed
+                <div>
+                    <button onClick={this.handleClick.bind(this, 5)}>
+                        Click Button
+                    </button>
+                    <br />
+                    <br />
+
+
+                </div>
+            );
         }
     }
 
