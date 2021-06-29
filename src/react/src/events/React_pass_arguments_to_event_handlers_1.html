@@ -19,21 +19,17 @@
             super(props);
         }
 
-        handClick = () => {
-            // this = Toggle instance
-            console.log('this is :', this);
-            // this.setState(function (prevState) {
-            //     return {
-            //         isToogle: !prevState.isToogle,
-            //     }
-            // });
+        handleClick(id) {
+            // id = 5
+            // this = Toggle
+            console.log('handClick this:' + this);
+            console.log('handClick this:' + id);
         }
 
         render() {
-            // Way 3 
-            // handClick = () => 只被新建一次。this.handClick 想等于 直接读取被创建后的地址。
-            return (<button onClick={this.handClick}>
-               Button
+            // Depressed: Use arrow function
+            return (<button onClick={(e) => this.handClick(10, e)}>
+                Click Button
             </button>);
         }
     }
