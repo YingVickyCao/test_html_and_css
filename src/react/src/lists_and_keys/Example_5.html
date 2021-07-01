@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Lists and Keys </title>
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
+<script type="text/babel">
+  function Blog(props) {
+    const sideBar = (
+      <ul>
+        {props.posts.map((item) =>
+          <li key={item.id}>{item.title}</li>
+        )}
+      </ul>
+    );
+
+    const content = props.posts.map((item) =>
+      <div key={item.id}>
+        <h3>{item.title}</h3>
+        <p>{item.content}</p>
+      </div>);
+
+    return (
+      <div>
+        {sideBar}
+        <hr />
+        {content}
+      </div>
+    );
+  }
+
+  const posts = [
+    { id: 1, title: "Hellow World", content: "Welcome to learning React" },
+    { id: 2, title: "Installation", content: "You can install React from npm" }
+  ];
+  ReactDOM.render(<Blog posts={posts} />, document.getElementById('root'));
+</script>

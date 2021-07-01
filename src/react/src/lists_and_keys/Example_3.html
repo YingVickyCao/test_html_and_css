@@ -14,18 +14,13 @@
 
 </html>
 <script type="text/babel">
-    // Basic List Component
-    // Way 1 :
-    // function NumberList(props) {
-    //     const numbers = props.numbers;
-    //     const listItems = numbers.map((item) => 
-    //     <li >{item}
-    //     </li>);
-    //     return (<ul>{listItems}</ul>);
-    // }
-    // const numbers = [1, 2, 3, 4, 5];
+    /**
+    Keys
+    Keys help React identify which items have changed, are added, or are removed.
+    Keys should be given to the elements inside the array to give the elements a stable identity.
+    */
 
-    // Way 2 : Add key
+    // Way 1 : Add key
     // function NumberList(props) {
     //     const numbers = props.numbers;
     //     const listItems = numbers.map((item) =>
@@ -35,8 +30,12 @@
     // }
     // const numbers = [1, 2, 3, 4, 5];
 
+    /**
+        Way 2 : Add key: Key is ID.
+        The best way to pick a key is to use a string that uniquely identifies a list item among it's siblings.
+        Most offten use IDs IDs from data as keys.
+    */
 
-    // Way 3 : Add key: useIDs from data as keys.
     // function NumberList(props) {
     //     const numbers = props.numbers;
     //     const listItems = numbers.map((item) =>
@@ -51,11 +50,18 @@
     //     { id: "id_4", text: "4" },
     //     { id: "id_5", text: "5" }];
 
-    // Way 4 : Add key: don't have stableIDS for rendered items, we can use item index as a key as a last resort.
+    /*
+    Way 3 : Add Key: Key is index
+    Add key: don't have stableIDS for rendered items, we can use item index as a key as a last resort.
+
+    We don’t recommend using indexes for keys if the order of items may change. 
+    This can negatively impact performance and may cause issues with component state. 
+    If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+    */
     function NumberList(props) {
         const numbers = props.numbers;
         const listItems = numbers.map((item, index) =>
-        // Only do this if items have no stable IDs.
+            // Only do this if items have no stable IDs.
             <li key={index}>{item.text}
             </li>);
         return (<ul>{listItems}</ul>);
